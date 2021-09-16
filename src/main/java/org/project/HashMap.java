@@ -1,6 +1,9 @@
 package org.project;
 
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class HashMap<K,V> {
     private Node<K,V> first;
@@ -57,7 +60,15 @@ public class HashMap<K,V> {
         return null;
     }
 
-
+    Set<K> keySet(){
+        Node <K,V> current = first;
+        Set<K> set = new HashSet<>();
+        while(true){
+            set.add(current.key);
+            if(current == last) return set;
+            current = current.nextNode;
+        }
+    }
 
     private class Node<K,V>{
         private K key;
@@ -65,5 +76,7 @@ public class HashMap<K,V> {
         private Node nextNode;
 
     }
+
+
 
 }
